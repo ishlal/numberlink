@@ -31,5 +31,6 @@ class RightTriangleScene(Scene):
         text_numberlink = Text("NumberLink")
         text_numberlink.next_to(numberlink, DOWN)
         self.play(Write(text_numberlink))
+        
 
         self.wait(2)
