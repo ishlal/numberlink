@@ -118,3 +118,5 @@ class complexity(Scene):
             self.remove(to_remove_2[i])
         self.play(FadeOut(text_description), FadeOut(text_qmark), FadeOut(text_friends), FadeOut(empty_squares), 
                     FadeOut(squares))
+
+        
