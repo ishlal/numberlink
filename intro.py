@@ -11,7 +11,7 @@ class Intro(Scene):
         self.play(FadeIn(image))
         self.wait(1)
         text_flow = Text("Flow Free")
-        text_flow.scale(1.5)
+        text_flow.scale(1.1)
         text_flow.next_to(image, DOWN)
         self.play(Write(text_flow))
         self.wait(2)

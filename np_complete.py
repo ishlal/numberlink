@@ -8,18 +8,21 @@ class npcomplete(Scene):
         oval = Ellipse(width=2.5, height=3, color=GRAY)
         oval.set_fill(GRAY, opacity=0.5)
         oval.shift(UP*1)
-        text_p = Text("P").scale(1.3)
+        text_p = Text("P").scale(1.5)
         text_p.move_to(oval.get_center())
-        self.play(Write(oval), Write(text_p), run_time=1)
+        # self.play(Write(oval), Write(text_p), run_time=1)
+        self.add(oval, text_p)
 
         oval2 = Ellipse(width=9, height=4, color=GREEN)
         oval2.set_fill(GREEN, opacity=0.5)
         oval2.move_to(oval.get_center())
         oval2.shift([-1, 0, 0])
         self.bring_to_back(oval2)
-        text_np = Text("NP").scale(1.3)
+        text_np = Text("NP").scale(1.5)
         text_np.move_to(oval2.get_center() + RIGHT*3.5)
-        self.play(Write(oval2), Write(text_np), run_time=1)
+        # self.play(Write(oval2), Write(text_np), run_time=1)
+        self.add(oval2, text_np)
+        self.bring_to_back(oval2)
         self.wait(1)
 
         oval_3 = Ellipse(width=3, height=2, color=RED)
@@ -48,10 +51,12 @@ class npcomplete(Scene):
         star_2.set_fill(BLUE, opacity=1)
         star_2.scale(0.15)
         star_2.move_to(oval.get_center() + LEFT*0.7)
+        star_2.shift(LEFT*1.2 + UP*1.5)
         star_3 = Star(color=PURPLE)
         star_3.set_fill(PURPLE, opacity=1)
         star_3.scale(0.15)
         star_3.move_to(oval.get_center() + RIGHT*0.7)
+        star_3.shift(RIGHT*1.2 + DOWN*1.1)
         self.play(Write(star), Write(star_2), Write(star_3))
         self.wait(1)
 
@@ -97,11 +102,19 @@ class npcomplete(Scene):
         self.play(Write(rounded_rect), Write(text_rect), run_time=1)
         self.wait(1)
 
-        rounded_rect = RoundedRectangle(width=14, height=7.7, corner_radius=0.5, color=PURPLE)
+        rounded_rect_v2 = RoundedRectangle(width=14, height=7.7, corner_radius=0.5, color=PURPLE)
         # rounded_rect.shift(LEFT)
-        rounded_rect.set_fill(PURPLE, opacity=0.2)
-        text_rect = Text("EXP").scale(0.8)
+        rounded_rect_v2.set_fill(PURPLE, opacity=0.2)
+        text_rect_v2 = Text("EXP").scale(0.8)
         # move text to top left corner of rounded rectangle
-        text_rect.move_to(rounded_rect.get_center() + LEFT*5.5 + UP*3.6)
-        self.play(Write(rounded_rect), Write(text_rect), run_time=1)
-        self.wait(1)
+        text_rect_v2.move_to(rounded_rect_v2.get_center() + LEFT*5.5 + UP*3.6)
+        self.play(Write(rounded_rect_v2), Write(text_rect_v2), run_time=1)
+        self.wait(3)
+        self.play(FadeOut(rounded_rect), FadeOut(text_rect),
+                  FadeOut(oval_bpp), FadeOut(text_bpp),
+                  FadeOut(oval), FadeOut(text_p),
+                  FadeOut(oval2), FadeOut(text_np),
+                  FadeOut(oval_3), FadeOut(text_np_complete),
+                  FadeOut(rounded_rect_v2), FadeOut(text_rect_v2),
+                  run_time=1)
+        self.wait(2)

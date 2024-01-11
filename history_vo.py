@@ -1,54 +1,75 @@
 from manim import *
 from colour import Color
+from manim_voiceover import VoiceoverScene
+from manim_voiceover.services.gtts import GTTSService
+import os
 
-class Gameplay(Scene):
+class Gameplay(VoiceoverScene):
     def construct(self):
+        self.set_speech_service(GTTSService(lang="en", tld="com", slow=False))
+        #change speed of speech
+
+
         puzzled_neighbor = ImageMobject("images/puzzled_neighbor.png")
         puzzled_neighbor.shift(DOWN*0.5)
         puzzled_neighbor.scale(0.7)
-        self.play(FadeIn(puzzled_neighbor))
-        self.wait(1)
+        with self.voiceover(text="The first appearance of a Flow-like game was seen in a newspaper called") as tracker:
+            self.play(FadeIn(puzzled_neighbor), run_time=tracker.duration)
+        # self.play(FadeIn(puzzled_neighbor))
+        # self.wait(1)
+            
 
         brooklyn_eagle = ImageMobject("images/brooklyn.jpg")
         brooklyn_eagle.to_edge(UP)
         brooklyn_eagle.scale(1.5)
-        self.play(FadeIn(brooklyn_eagle))
-        self.wait(2.5)
+        with self.voiceover(text="the Brooklyn Daily Eagle in 1897") as tracker:
+            self.play(FadeIn(brooklyn_eagle), run_time=tracker.duration)
+        # self.play(FadeIn(brooklyn_eagle))
+        # self.wait(2.5)
 
         sam_loyd = ImageMobject("images/samloyd.jpg")
         sam_loyd.shift(LEFT*5)
         # sam_loyd.shift(DOWN)
         sam_loyd.scale(0.3)
-        self.play(FadeIn(sam_loyd))
+        # self.play(FadeIn(sam_loyd))
 
-        self.wait(1.5)
         name = Text("Sam Loyd")
         name.next_to(sam_loyd, DOWN)
         name.scale(0.7)
         years = Text("1841 - 1911")
         years.next_to(name, DOWN)
         years.scale(0.5)
-        self.play(Write(name))
-        self.wait(0.2)
-        self.play(Write(years))
-        self.wait(2.2)
-        self.play(FadeOut(puzzled_neighbor))
-        self.wait(1)
-
-        text_chessplayer = Text("Chess Player")
-        text_chessplayer.next_to(sam_loyd, RIGHT)
-        text_chessplayer.shift(RIGHT*0.5)
-        self.play(Write(text_chessplayer))
-        self.wait(0.5)
-        text_mathematician = Text("Mathematician")
-        text_mathematician.next_to(text_chessplayer, DOWN)
-        self.play(Write(text_mathematician))
-        self.wait(0.5)
-        text_puzzle = Text("Puzzle Composer")
-        text_puzzle.next_to(text_mathematician, DOWN)
-        self.play(Write(text_puzzle))
+        with self.voiceover(text="by a man named Sam Loyd") as tracker:
+            self.play(FadeIn(sam_loyd), Write(name), Write(years), run_time=tracker.duration)
+        # self.play(Write(name))
+        # self.wait(0.2)
+        # self.play(Write(years))
+        # self.wait(2.2)
+        # self.play(FadeOut(puzzled_neighbor))
+        # self.wait(1)
         self.wait(2)
-        self.play(FadeOut(text_chessplayer), FadeOut(text_mathematician), FadeOut(text_puzzle))
+        self.play(FadeOut(brooklyn_eagle), FadeOut(puzzled_neighbor))
+        blist = BulletedList("Chess Player", "Mathematician", "Puzzle Composer")
+        # text_chessplayer = Text("Chess Player")
+        # text_chessplayer.next_to(sam_loyd, RIGHT)
+        # text_chessplayer.shift(RIGHT*0.5)
+        # self.play(Write(text_chessplayer))
+        # self.wait(0.5)
+        # text_mathematician = Text("Mathematician")
+        # text_mathematician.next_to(text_chessplayer, DOWN)
+        # self.play(Write(text_mathematician))
+        # self.wait(0.5)
+        # text_puzzle = Text("Puzzle Composer")
+        # text_puzzle.next_to(text_mathematician, DOWN)
+        with self.voiceover(text="Loyd was a chess player") as tracker:
+            self.play(Write(blist[0]), run_time=tracker.duration)
+        with self.voiceover(text="mathematician"):
+            self.play(Write(blist[1]), run_time=tracker.duration)
+        with self.voiceover(text="and most importantly, a puzzle composer"):
+            self.play(Write(blist[2]), run_time=tracker.duration)
+        self.wait(2)
+        # self.play(FadeOut(text_chessplayer), FadeOut(text_mathematician), FadeOut(text_puzzle))
+        self.play(FadeOut(blist))
         self.wait(1)
 
 

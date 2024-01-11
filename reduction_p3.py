@@ -387,11 +387,11 @@ class reduction_p3(Scene):
             text_version2, text_np_complete_2
         )
         self.wait(2)
-        image_paper = ImageMobject("images/japanese_paper.png").scale(0.8)
+        image_paper_v2 = ImageMobject("images/japanese_paper.png").scale(0.8)
         # image_paper.next_to(text_np_complete_2, DOWN)
-        self.play(FadeIn(image_paper))
+        self.play(FadeIn(image_paper_v2))
         self.wait(4)
-        self.play(image_paper.animate.scale(0.35).next_to(text_np_complete_2, DOWN))
+        self.play(image_paper_v2.animate.scale(0.35).next_to(text_np_complete_2, DOWN))
         self.wait(2)
         # self.play(FadeOut(image_paper))
         # self.wait(2)
@@ -464,22 +464,30 @@ class reduction_p3(Scene):
                   FadeIn(blue_line_8_3), FadeIn(blue_line_9_3), FadeIn(blue_line_10_3), 
                   FadeIn(green_line_1_3), FadeIn(yellow_line_1_3), FadeIn(yellow_line_2_3), 
                   FadeIn(yellow_line_3_3))
-        # group_version_3 = VGroup(
-        #     squares_3, red_circ_3, red_circ_copy_3, blue_circ_3, blue_circ_copy_3, green_circ_3, green_circ_copy_3, yellow_circ_3, yellow_circ_copy_3,
-        #     red_line_1_3, red_line_2_3, blue_line_1_3, blue_line_2_3, blue_line_3_3, blue_line_4_3, blue_line_5_3, blue_line_6_3, blue_line_7_3, blue_line_8_3, blue_line_9_3, blue_line_10_3,
-        #     green_line_1_3, yellow_line_1_3, yellow_line_2_3, yellow_line_3_3,
-        #     text_version3, text_np_complete_3
-        # )
+        
         text_np_complete_3 = Text("NP-complete").scale(0.7)
         text_np_complete_3.next_to(text_version3, DOWN)
         self.play(Write(text_np_complete_3))
         zig_zag_paper = ImageMobject("images/zigzag.png").scale(0.8)
         # image_paper.next_to(text_np_complete_2, DOWN)
+        group_version_3 = VGroup(
+            squares_3, red_circ_3, red_circ_copy_3, blue_circ_3, blue_circ_copy_3, green_circ_3, green_circ_copy_3, yellow_circ_3, yellow_circ_copy_3,
+            red_line_1_3, red_line_2_3, blue_line_1_3, blue_line_2_3, blue_line_3_3, blue_line_4_3, blue_line_5_3, blue_line_6_3, blue_line_7_3, blue_line_8_3, blue_line_9_3, blue_line_10_3,
+            green_line_1_3, yellow_line_1_3, yellow_line_2_3, yellow_line_3_3,
+            text_version3, text_np_complete_3
+        )
         self.wait(1)
         self.play(FadeIn(zig_zag_paper))
         self.wait(4)
         self.play(zig_zag_paper.animate.scale(0.35).next_to(text_np_complete_3, DOWN))
         self.wait(2)
         self.wait(3)
+        self.play(FadeOut(zig_zag_paper),
+                  FadeOut(image_paper),
+                    FadeOut(image_paper_v2),
+                  FadeOut(group_version_1),
+                  FadeOut(group_version_2),
+                  FadeOut(group_version_3))
+        self.wait(2)
 
 

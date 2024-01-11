@@ -5,7 +5,7 @@ from colour import Color
 class complexity(Scene):
     def construct(self):
         # draw an oval
-        oval = Ellipse(width=4, height=2, color=GRAY)
+        oval = Ellipse(width=2.5, height=3, color=GRAY)
         oval.set_fill(GRAY, opacity=0.5)
         oval.shift(UP*1)
         text_p = Text("P").scale(1.5)
@@ -33,12 +33,13 @@ class complexity(Scene):
         self.play(FadeOut(text_p_copy), FadeOut(text_polynomial), FadeOut(text_quickly), FadeOut(text_oldest))
         self.wait(1)
         # draw an oval
-        oval2 = Ellipse(width=8, height=4, color=GREEN)
+        oval2 = Ellipse(width=9, height=4, color=GREEN)
         oval2.set_fill(GREEN, opacity=0.5)
         oval2.move_to(oval.get_center())
+        oval2.shift([-1, 0, 0])
         self.bring_to_back(oval2)
         text_np = Text("NP").scale(1.5)
-        text_np.move_to(oval2.get_center() + RIGHT*3)
+        text_np.move_to(oval2.get_center() + RIGHT*3.5)
         self.play(Write(oval2), Write(text_np), run_time=1)
         self.wait(1)
         text_np_copy = text_np.copy()

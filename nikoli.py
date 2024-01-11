@@ -3,10 +3,14 @@ from colour import Color
 
 class RightTriangleScene(Scene):
     def construct(self):
+        # self.set_speech_service(RecorderService())
         image_nikoli = ImageMobject("images/nikoli.png").scale(0.8)
         image_nikoli.to_edge(UP)
+        # with self.voiceover(text="This circle is drawn as I speak.") as tracker:
+        #     self.play(FadeIn(image_nikoli))
+        #     tracker.add_frame()
         self.play(FadeIn(image_nikoli))
-        self.wait(1)
+        # self.wait(1)
 
         sudoku = ImageMobject("images/sudoku.jpg").scale(1.5)
         sudoku.shift(LEFT*5 + DOWN*0.5)

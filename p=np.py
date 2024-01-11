@@ -68,7 +68,7 @@ class pnp(Scene):
         oval_3_copy = Ellipse(width = 4.6, height = 2, color=RED)
         oval_3_copy.set_fill(RED, opacity=0.5)
         oval_3_copy.move_to(oval_3.get_center() + RIGHT*1.1)
-        self.play(Transform(oval_3, oval_3_copy), star.animate.move_to(star_2.get_center()), run_time=0.5)
+        self.play(Transform(oval_3, oval_3_copy), star.animate.move_to(star_2.get_center()), run_time=1)
         # self.play(star.animate.move_to(star_2.get_center()),
         #            Transform(oval_3, oval_3_copy))
         self.wait(0.5)
@@ -118,12 +118,12 @@ class pnp(Scene):
         text_solution = Text("Is there a solution?").scale(0.8)
         text_solution.next_to(game_group, RIGHT)
         self.play(Write(game_group), Write(text_solution), run_time=1)
-        text_np = MathTex(r"\in \text{NP-Complete}")
-        text_np.next_to(text_solution, RIGHT)
+        text_np_v2 = MathTex(r"\in \text{NP-Complete}")
+        text_np_v2.next_to(text_solution, RIGHT)
         self.wait(1.3)
-        self.play(Write(text_np))
+        self.play(Write(text_np_v2))
         self.wait(2)
-        self.play(FadeOut(text_np), FadeOut(text_solution), Transform(game_group, star))
+        self.play(FadeOut(text_np_v2), FadeOut(text_solution), Transform(game_group, star))
         self.wait(0.5)
 
         text_show_np_complete = Text("To prove NP-Complete: ").scale(0.8)
@@ -135,8 +135,8 @@ class pnp(Scene):
         text_step_1.next_to(text_show_np_complete, DOWN)
         self.play(Write(text_step_1))
         self.wait(1)
-        star_new = Star(color=PURPLE)
-        star_new.set_fill(PURPLE, opacity=1)
+        star_new = Star(color=YELLOW)
+        star_new.set_fill(YELLOW, opacity=1)
         star_new.scale(0.15)
         star_new.move_to(oval2.get_center() + DOWN + LEFT*1.2)
         game_group_copy_2 = game_group_copy.copy()
@@ -157,7 +157,17 @@ class pnp(Scene):
         # make arrow head smaller
         squig_arrow.tip_length = 0.02
         self.play(Write(squig_arrow))
-
-
-
+        self.wait(2)
+        self.play(FadeOut(squig_arrow))
+        self.play(game_group_copy_2.animate.move_to(another_star.get_center() + DOWN*0.5 + LEFT*0.5))
+        self.wait(2)
+        self.play(
+            FadeOut(game_group_copy_2), FadeOut(another_star),
+            FadeOut(text_step_1), FadeOut(text_step_2),
+            FadeOut(text_show_np_complete),
+            FadeOut(oval_3), FadeOut(text_np_complete),
+            FadeOut(oval), FadeOut(text_p),
+            FadeOut(oval2), FadeOut(text_np),
+            FadeOut(game_group_copy)
+        )
         self.wait(2)

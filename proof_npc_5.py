@@ -118,5 +118,12 @@ class proof_npc_5(Scene):
         new_phi = MathTex(r"\text{TRUE}").scale(1.2).set_color(GREEN)
         new_phi.next_to(threeSATeq_expanded[0], RIGHT)
         self.play(Transform(leftover_phi, new_phi))
-        self.wait(3)              
+        self.wait(3)         
+        self.play(FadeOut(leftover_phi),
+                  FadeOut(text_satisfiable), 
+                  FadeOut(text_sat_2), FadeOut(surr_box),
+                    FadeOut(threesat_q), FadeOut(line),
+                    FadeOut(group_vals), FadeOut(text_3SAT),
+                    FadeOut(threeSATeq_expanded[0]))
+        self.wait(2)   
 

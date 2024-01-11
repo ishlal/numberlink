@@ -52,8 +52,15 @@ class three_versions(Scene):
         green_line_2.stroke_width = 15
         yellow_line_1 = Line(squares[1].get_center(), squares[3].get_center(), color=Color(hue=0.15, saturation=1, luminance=0.5), fill_opacity=1)
         yellow_line_1.stroke_width = 15
-        self.play(FadeIn(red_line_1), FadeIn(red_line_2), FadeIn(blue_line_1), FadeIn(blue_line_2), FadeIn(blue_line_3), FadeIn(blue_line_4), 
-                  FadeIn(green_line_1), FadeIn(green_line_2), FadeIn(yellow_line_1))
+        # self.play(FadeIn(red_line_1), FadeIn(red_line_2), FadeIn(blue_line_1), FadeIn(blue_line_2), FadeIn(blue_line_3), FadeIn(blue_line_4), 
+        #           FadeIn(green_line_1), FadeIn(green_line_2), FadeIn(yellow_line_1))
+        self.play(FadeIn(red_line_1), FadeIn(red_line_2))
+        self.wait(0.5)
+        self.play(FadeIn(blue_line_1), FadeIn(blue_line_2), FadeIn(blue_line_3), FadeIn(blue_line_4))
+        self.wait(0.5)
+        self.play(FadeIn(green_line_1), FadeIn(green_line_2))
+        self.wait(0.5)
+        self.play(FadeIn(yellow_line_1))
         self.wait(1)
         squares_2 = VGroup(
             *[VGroup(Square(color=WHITE),
@@ -103,9 +110,16 @@ class three_versions(Scene):
         yellow_line_4_2.stroke_width = 15
         yellow_line_5_2 = Line(squares_2[11].get_center(), squares_2[16].get_center(), color=Color(hue=0.15, saturation=1, luminance=0.5), fill_opacity=1)
         yellow_line_5_2.stroke_width = 15
-        self.play(FadeIn(red_line_1_2), FadeIn(blue_line_1_2), FadeIn(blue_line_2_2), 
-                  FadeIn(green_line_1_2), FadeIn(yellow_line_1_2), FadeIn(yellow_line_2_2), 
-                  FadeIn(yellow_line_3_2), FadeIn(yellow_line_4_2), FadeIn(yellow_line_5_2))
+        # self.play(FadeIn(red_line_1_2), FadeIn(blue_line_1_2), FadeIn(blue_line_2_2), 
+        #           FadeIn(green_line_1_2), FadeIn(yellow_line_1_2), FadeIn(yellow_line_2_2), 
+        #           FadeIn(yellow_line_3_2), FadeIn(yellow_line_4_2), FadeIn(yellow_line_5_2))
+        self.play(FadeIn(red_line_1_2))
+        self.wait(0.5)
+        self.play(FadeIn(blue_line_1_2), FadeIn(blue_line_2_2))
+        self.wait(0.5)
+        self.play(FadeIn(green_line_1_2))
+        self.wait(0.5)
+        self.play(FadeIn(yellow_line_1_2), FadeIn(yellow_line_2_2), FadeIn(yellow_line_3_2), FadeIn(yellow_line_4_2), FadeIn(yellow_line_5_2))
         self.wait(1.5)
 
         squares_3 = VGroup(
@@ -169,14 +183,51 @@ class three_versions(Scene):
         yellow_line_2_3.stroke_width = 15
         yellow_line_3_3 = Line(squares_3[6].get_center(), squares_3[1].get_center(), color=Color(hue=0.15, saturation=1, luminance=0.5), fill_opacity=1)
         yellow_line_3_3.stroke_width = 15
-        self.play(FadeIn(red_line_1_3), FadeIn(red_line_2_3), FadeIn(blue_line_1_3), 
-                  FadeIn(blue_line_2_3), FadeIn(blue_line_3_3), FadeIn(blue_line_4_3), 
-                  FadeIn(blue_line_5_3), FadeIn(blue_line_6_3), FadeIn(blue_line_7_3), 
-                  FadeIn(blue_line_8_3), FadeIn(blue_line_9_3), FadeIn(blue_line_10_3), 
-                  FadeIn(green_line_1_3), FadeIn(yellow_line_1_3), FadeIn(yellow_line_2_3), 
-                  FadeIn(yellow_line_3_3))
+        # self.play(FadeIn(red_line_1_3), FadeIn(red_line_2_3), FadeIn(blue_line_1_3), 
+        #           FadeIn(blue_line_2_3), FadeIn(blue_line_3_3), FadeIn(blue_line_4_3), 
+        #           FadeIn(blue_line_5_3), FadeIn(blue_line_6_3), FadeIn(blue_line_7_3), 
+        #           FadeIn(blue_line_8_3), FadeIn(blue_line_9_3), FadeIn(blue_line_10_3), 
+        #           FadeIn(green_line_1_3), FadeIn(yellow_line_1_3), FadeIn(yellow_line_2_3), 
+        #           FadeIn(yellow_line_3_3))
+        self.play(FadeIn(red_line_1_3), FadeIn(red_line_2_3))
+        self.wait(0.5)
+        self.play(FadeIn(blue_line_1_3), FadeIn(blue_line_2_3), FadeIn(blue_line_3_3), FadeIn(blue_line_4_3), FadeIn(blue_line_5_3), FadeIn(blue_line_6_3), FadeIn(blue_line_7_3), FadeIn(blue_line_8_3), FadeIn(blue_line_9_3), FadeIn(blue_line_10_3))
+        self.wait(0.5)
+        self.play(FadeIn(green_line_1_3))
+        self.wait(0.5)
+        self.play(FadeIn(yellow_line_1_3), FadeIn(yellow_line_2_3), FadeIn(yellow_line_3_3))
         
+        self.wait(3)
+        self.play(FadeOut(blue_line_1_3), FadeOut(blue_line_2_3), FadeOut(blue_line_3_3), FadeOut(blue_line_4_3), FadeOut(blue_line_5_3), FadeOut(blue_line_6_3), FadeOut(blue_line_7_3), FadeOut(blue_line_8_3), FadeOut(blue_line_9_3), FadeOut(blue_line_10_3))
         self.wait(2)
+        blue_line_short_1_3 = Line(squares_3[15].get_center(), squares_3[18].get_center(), color=Color(hue=0.6, saturation=1, luminance=0.5), fill_opacity=1)
+        blue_line_short_1_3.stroke_width = 15
+        blue_line_short_2_3 = Line(squares_3[18].get_center(), squares_3[3].get_center(), color=Color(hue=0.6, saturation=1, luminance=0.5), fill_opacity=1)
+        blue_line_short_2_3.stroke_width = 15
+        blue_line_short_3_3 = Line(squares_3[3].get_center(), squares_3[4].get_center(), color=Color(hue=0.6, saturation=1, luminance=0.5), fill_opacity=1)
+        blue_line_short_3_3.stroke_width = 15
+        self.play(FadeIn(blue_line_short_1_3), FadeIn(blue_line_short_2_3), FadeIn(blue_line_short_3_3))
+        self.wait(2)
+        self.play(FadeOut(blue_line_short_1_3), FadeOut(blue_line_short_2_3), FadeOut(blue_line_short_3_3),
+                  FadeIn(blue_line_1_3), FadeIn(blue_line_2_3), FadeIn(blue_line_3_3), FadeIn(blue_line_4_3), FadeIn(blue_line_5_3), FadeIn(blue_line_6_3), FadeIn(blue_line_7_3), FadeIn(blue_line_8_3), FadeIn(blue_line_9_3), FadeIn(blue_line_10_3))
+
+        self.wait(3)
         # illuminate squares_2
         self.play(Indicate(squares), Indicate(squares_2))
-        self.wait(1)
+        self.wait(3)
+        self.play(FadeOut(squares), FadeOut(squares_2), FadeOut(text_version1), FadeOut(text_version2), FadeOut(red_circ), FadeOut(red_circ_copy),
+                    FadeOut(blue_circ), FadeOut(blue_circ_copy), FadeOut(green_circ), FadeOut(green_circ_copy),
+                    FadeOut(yellow_circ), FadeOut(yellow_circ_copy), FadeOut(red_circ_2), FadeOut(red_circ_copy_2),
+                    FadeOut(blue_circ_2), FadeOut(blue_circ_copy_2), FadeOut(green_circ_2), FadeOut(green_circ_copy_2),
+                    FadeOut(yellow_circ_2), FadeOut(yellow_circ_copy_2), FadeOut(red_line_1), FadeOut(red_line_2), FadeOut(blue_line_1), FadeOut(blue_line_2), FadeOut(blue_line_3), FadeOut(blue_line_4), 
+                  FadeOut(green_line_1), FadeOut(yellow_line_1), FadeOut(text_version3), FadeOut(red_circ_3), FadeOut(red_circ_copy_3),
+                    FadeOut(blue_circ_3), FadeOut(blue_circ_copy_3), FadeOut(green_circ_3), FadeOut(green_circ_copy_3),
+                    FadeOut(yellow_circ_3), FadeOut(yellow_circ_copy_3), FadeOut(red_line_1_2), FadeOut(blue_line_1_2), FadeOut(blue_line_2_2), 
+                  FadeOut(green_line_1_2), FadeOut(yellow_line_1_2), FadeOut(yellow_line_2_2), 
+                  FadeOut(yellow_line_3_2), FadeOut(yellow_line_4_2), FadeOut(yellow_line_5_2), FadeOut(red_line_1_3), FadeOut(red_line_2_3), FadeOut(blue_line_1_3), 
+                  FadeOut(blue_line_2_3), FadeOut(blue_line_3_3), FadeOut(blue_line_4_3), 
+                  FadeOut(blue_line_5_3), FadeOut(blue_line_6_3), FadeOut(blue_line_7_3), 
+                  FadeOut(blue_line_8_3), FadeOut(blue_line_9_3), FadeOut(blue_line_10_3),
+                  FadeOut(green_line_1_3), FadeOut(yellow_line_1_3), FadeOut(yellow_line_2_3),
+                  FadeOut(yellow_line_3_3), FadeOut(text_title))
+        

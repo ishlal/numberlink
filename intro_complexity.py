@@ -111,7 +111,7 @@ class complexity(Scene):
         self.play(FadeOut(image_x))
         self.wait(1)
         text_qmark = Text("?").scale(2.5)
-        text_qmark.next_to(text_friends, DOWN)
+        text_qmark.next_to(empty_squares, DOWN)
         self.play(FadeIn(text_qmark))
         self.wait(2)
         for i in range(len(to_remove_2)):
