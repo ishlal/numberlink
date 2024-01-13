@@ -38,8 +38,103 @@ class rem_red(Scene):
         self.play(var_phi_copy.animate.shift(RIGHT*2.5))
         self.play(FadeOut(var_phi_copy))
         self.wait(2)
-        graph_img = ImageMobject("images/graph_img.png").scale(0.01)
+
+        circles = VGroup(
+            *[VGroup(Circle(color=WHITE,
+                     fill_opacity=1).scale(0.15),
+                     Text(str(j+1)).scale(0.5).set_color(BLACK)) for j in range(25)]
+        ).arrange_in_grid(5, 5, buff=0.7)
+        circles.shift(RIGHT*3 + UP*1.2)
+
+        # add edges between nodes
+        edges = VGroup(
+                    *[VGroup(Line(circles[0].get_center(), circles[1].get_center(), color=WHITE)),
+                     VGroup(Line(circles[0].get_center(), circles[5].get_center(), color=WHITE)),
+                     VGroup(Line(circles[1].get_center(), circles[2].get_center(), color=WHITE)),
+                     VGroup(Line(circles[1].get_center(), circles[6].get_center(), color=WHITE)),
+                     VGroup(Line(circles[2].get_center(), circles[3].get_center(), color=WHITE)),
+                     VGroup(Line(circles[2].get_center(), circles[7].get_center(), color=WHITE)),
+                     VGroup(Line(circles[3].get_center(), circles[4].get_center(), color=WHITE)),
+                     VGroup(Line(circles[3].get_center(), circles[8].get_center(), color=WHITE)),
+                     VGroup(Line(circles[4].get_center(), circles[9].get_center(), color=WHITE)),
+                     VGroup(Line(circles[5].get_center(), circles[6].get_center(), color=WHITE)),
+                     VGroup(Line(circles[5].get_center(), circles[10].get_center(), color=WHITE)),
+                     VGroup(Line(circles[6].get_center(), circles[7].get_center(), color=WHITE)),
+                     VGroup(Line(circles[6].get_center(), circles[11].get_center(), color=WHITE)),
+                     VGroup(Line(circles[7].get_center(), circles[8].get_center(), color=WHITE)),
+                     VGroup(Line(circles[7].get_center(), circles[12].get_center(), color=WHITE)),
+                     VGroup(Line(circles[8].get_center(), circles[9].get_center(), color=WHITE)),
+                     VGroup(Line(circles[8].get_center(), circles[13].get_center(), color=WHITE)),
+                     VGroup(Line(circles[9].get_center(), circles[14].get_center(), color=WHITE)),
+                     VGroup(Line(circles[10].get_center(), circles[11].get_center(), color=WHITE)),
+                     VGroup(Line(circles[10].get_center(), circles[15].get_center(), color=WHITE)),
+                     VGroup(Line(circles[11].get_center(), circles[12].get_center(), color=WHITE)),
+                     VGroup(Line(circles[11].get_center(), circles[16].get_center(), color=WHITE)),
+                     VGroup(Line(circles[12].get_center(), circles[13].get_center(), color=WHITE)),
+                     VGroup(Line(circles[12].get_center(), circles[17].get_center(), color=WHITE)),
+                        VGroup(Line(circles[13].get_center(), circles[14].get_center(), color=WHITE)),
+                        VGroup(Line(circles[13].get_center(), circles[18].get_center(), color=WHITE)),
+                        VGroup(Line(circles[14].get_center(), circles[19].get_center(), color=WHITE)),
+                        VGroup(Line(circles[15].get_center(), circles[16].get_center(), color=WHITE)),
+                        VGroup(Line(circles[16].get_center(), circles[17].get_center(), color=WHITE)),
+                        VGroup(Line(circles[17].get_center(), circles[18].get_center(), color=WHITE)),
+                        VGroup(Line(circles[18].get_center(), circles[19].get_center(), color=WHITE)),
+                        VGroup(Line(circles[15].get_center(), circles[20].get_center(), color=WHITE)),
+                        VGroup(Line(circles[16].get_center(), circles[21].get_center(), color=WHITE)),
+                        VGroup(Line(circles[17].get_center(), circles[22].get_center(), color=WHITE)),
+                        VGroup(Line(circles[18].get_center(), circles[23].get_center(), color=WHITE)),
+                        VGroup(Line(circles[19].get_center(), circles[24].get_center(), color=WHITE)),
+                        VGroup(Line(circles[20].get_center(), circles[21].get_center(), color=WHITE)),
+                        VGroup(Line(circles[21].get_center(), circles[22].get_center(), color=WHITE)),
+                        VGroup(Line(circles[22].get_center(), circles[23].get_center(), color=WHITE)),
+                        VGroup(Line(circles[23].get_center(), circles[24].get_center(), color=WHITE))
+            ])
+        # self.bring_to_front(circles)
+        # self.bring_to_back(edges)
+        # self.play(Write(edges), run_time=1)
+        # self.wait(1)
+
+        # bring circles to front
+        # self.bring_to_front(circles[5], circles[22], circles[6], circles[8], circles[13], circles[15], circles[18], circles[20])
+
+        # change color of circles[5] to red and enlarge it
+
+        circles[5][0].scale(1.6)
+        circles[5][0].set_color(Color(hue=0, saturation=1, luminance=0.5))
+        circles[22][0].scale(1.6)
+        circles[22][0].set_color(Color(hue=0, saturation=1, luminance=0.5))
+        circles[6][0].scale(1.6)
+        circles[6][0].set_color(Color(hue=0.6, saturation=1, luminance=0.5))
+        circles[8][0].scale(1.6)
+        circles[8][0].set_color(Color(hue=0.6, saturation=1, luminance=0.5))
+        circles[13][0].scale(1.6)
+        circles[13][0].set_color(Color(hue=0.3, saturation=1, luminance=0.5))
+        circles[15][0].scale(1.6)
+        circles[15][0].set_color(Color(hue=0.3, saturation=1, luminance=0.5))
+        circles[18][0].scale(1.6)
+        circles[18][0].set_color(Color(hue=0.15, saturation=1, luminance=0.5))
+        circles[20][0].scale(1.6)
+        circles[20][0].set_color(Color(hue=0.15, saturation=1, luminance=0.5))
+        # self.play(circles[5][0].animate.set_color(Color(hue=0, saturation=1, luminance=0.5)),
+        #            circles[22][0].animate.set_color(Color(hue=0, saturation=1, luminance=0.5)),
+        #            circles[6][0].animate.set_color(Color(hue=0.6, saturation=1, luminance=0.5)),
+        #             circles[8][0].animate.set_color(Color(hue=0.6, saturation=1, luminance=0.5)),
+        #              circles[13][0].animate.set_color(Color(hue=0.3, saturation=1, luminance=0.5)),
+        #               circles[15][0].animate.set_color(Color(hue=0.3, saturation=1, luminance=0.5)),
+        #                circles[18][0].animate.set_color(Color(hue=0.15, saturation=1, luminance=0.5)),
+        #                 circles[20][0].animate.set_color(Color(hue=0.15, saturation=1, luminance=0.5)),
+        #                          run_time=0.3)
+
+
+
+        # graph_img = ImageMobject("images/graph_img.png").scale(0.01)
+        graph_img = VGroup(
+            edges, circles
+        )
+        graph_img.move_to(ORIGIN)
+        graph_img.scale(0.01)
         self.play(FadeIn(graph_img))
+        self.bring_to_back(graph_img[1])
         self.play(graph_img.animate.shift(RIGHT*5).scale(60))
         self.wait(2)
         varphi = MathTex(r"\varphi").scale(1.5)
@@ -120,7 +215,7 @@ class rem_red(Scene):
         self.play(FadeIn(squares), Write(text_version1), FadeIn(red_circ), FadeIn(red_circ_copy), 
                   FadeIn(blue_circ), FadeIn(blue_circ_copy), 
                   FadeIn(green_circ), FadeIn(green_circ_copy),
-                    FadeIn(yellow_circ), FadeIn(yellow_circ_copy), run_time=1)
+                    FadeIn(yellow_circ), FadeIn(yellow_circ_copy), FadeOut(graph_img), run_time=1)
         # self.play(FadeIn(red_line_1), FadeIn(red_line_2))
         # self.wait(0.5)
         # self.play(FadeIn(blue_line_1), FadeIn(blue_line_2), FadeIn(blue_line_3), FadeIn(blue_line_4))

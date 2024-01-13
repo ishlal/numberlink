@@ -339,6 +339,35 @@ class reduction(ZoomedScene):
             FadeOut(surr_box)
         )
 
+
+        # new scene yikers
+        self.play(FadeOut(threeSATeq))
+        phi_1 = MathTex(r"\varphi",  r"\text{ is unsatisfiable} \implies \varphi = F \text{ for all assignments}").scale(0.8)
+        phi_1.to_edge(UP)
+        self.play(Write(phi_1))
+        phi_2 = MathTex(r"\varphi", r" = C_1 \lor C_2 \lor C_3").scale(0.8)
+        phi_2[0].next_to(phi_1[0], DOWN)
+        phi_2[1:].next_to(phi_2[0], RIGHT)
+        phi_2.shift(DOWN*0.3)
+        self.play(Write(phi_2))
+        self.wait(1)
+        phi_3 = MathTex(r"\varphi", r" = C_1 \lor ", r"F", r" \lor C_3").scale(0.8)
+        phi_3[0].next_to(phi_1[0], DOWN)
+        phi_3[1:].next_to(phi_3[0], RIGHT)
+        phi_3.shift(DOWN*0.3)
+        phi_3[2].set_color(RED)
+        self.play(Transform(phi_2, phi_3))
+        self.wait(1)
+        self.play(line_c_2_1.animate.set_color(Color(hue=0, saturation=1, luminance=0.5)))
+        self.wait(0.4)
+        self.play(line_c_2_2.animate.set_color(Color(hue=0, saturation=1, luminance=0.5)))
+        self.wait(0.4)
+        self.play(line_c_2_3.animate.set_color(Color(hue=0, saturation=1, luminance=0.5)))
+        self.wait(1)
+
+
+
+
         self.wait(3)
         # now do the movement thingy ughem
         self.play(
@@ -601,6 +630,47 @@ class reduction(ZoomedScene):
                     Write(small_circle_321), Write(text_321),
                     Write(small_circle_330), Write(text_330),
                     Write(small_circle_341), Write(text_341))
+        self.wait(2)
+
+        graph_group_big = VGroup(
+            clause_1_copy, clause_2_copy, clause_3_copy, x_1_copy, x_2_copy, x_3_copy, x_4_copy,
+            line_c_1_1, line_c_1_2, line_c_1_3, line_c_2_1, line_c_2_2, line_c_2_3, line_c_3_1, line_c_3_2, line_c_3_3,
+            line_x_1_1, line_x_1_2, line_x_2_1, line_x_2_2, line_x_3_1, line_x_3_2, line_x_4_1, line_x_4_2,
+            small_circle_n11, small_circle_n120, small_circle_n131, small_circle_n210, small_circle_n231, small_circle_n241,
+            small_circle_321, small_circle_330, small_circle_341,
+            text_n111, text_n120, text_n131, text_n210, text_n221, text_n241, text_321, text_330, text_341
+        )
+        self.play(graph_group_big.animate.shift(RIGHT*3.5 + UP*0.3).scale(0.4))
+        threeSATeq_first_copy = MathTex(r"\varphi")
+        threeSATeq_first_copy.move_to(threeSATeq[0].get_center())
+        self.play(FadeOut(threeSATeq), threeSATeq_first_copy.animate.shift(DOWN*3.5 + RIGHT).scale(1.5))
+
+        curved_arrow = CurvedArrow(start_point=threeSATeq_first_copy.get_center() + UP*0.5, end_point=graph_group_big.get_center() + UP*1.5, angle=-TAU/4)
+        self.play(Write(curved_arrow))
+        self.wait(2)
+
+        img_check = ImageMobject("images/check.png").scale(0.1)
+        img_check_copy = img_check.copy()
+        img_check.next_to(threeSATeq_first_copy, DOWN)
+        img_check.shift(DOWN)
+        img_check_copy.next_to(graph_group_big, DOWN)
+        img_check_copy.shift(DOWN*0.2)
+        self.play(FadeIn(img_check))
+        self.wait(1)
+        self.play(FadeIn(img_check_copy))
+        self.wait(1)
+        self.play(FadeOut(img_check), FadeOut(img_check_copy))
+        img_x = ImageMobject("images/x.png").scale(0.1)
+        img_x_copy = img_x.copy()
+        img_x.next_to(threeSATeq_first_copy, DOWN)
+        img_x.shift(DOWN)
+        img_x_copy.next_to(graph_group_big, DOWN)
+        img_x_copy.shift(DOWN*0.2)
+        self.play(FadeIn(img_x))
+        self.wait(1)
+        self.play(FadeIn(img_x_copy))
+        self.wait(1)
+        self.play(FadeOut(img_x), FadeOut(img_x_copy))
 
         f = open("locations.txt", "w")
         f.write(str(x_1_copy[1].get_center()) + "\n")

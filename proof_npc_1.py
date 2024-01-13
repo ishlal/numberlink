@@ -65,7 +65,7 @@ class proof_npc_1(Scene):
         self.play(Transform(text_manipulate, text_polynomial_reduction), Transform(surr_box_text_manipulate, surr_box_poly))
         self.wait(2)
 
-        text_3SAT = Text("3SAT").scale(1.2)
+        text_3SAT = MathTex("3SAT").scale(1.2)
         text_Flow = Text("Flow").scale(1.2)
         text_3SAT.move_to(big_letter_A.get_center())
         text_Flow.move_to(big_letter_B.get_center())
